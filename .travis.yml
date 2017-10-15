@@ -1,0 +1,43 @@
+language: bash
+
+services:
+  - docker
+
+matrix:
+  fast_finish: true
+  include:
+    - env:
+      - SERVICE=eslint
+      - VERSION=1
+    - env:
+      - SERVICE=eslint
+      - VERSION=2
+    - env:
+      - SERVICE=eslint
+      - VERSION=3
+    - env:
+      - SERVICE=eslint
+      - VERSION=4
+      - ALIAS=latest
+    - env:
+      - SERVICE=php-cs-fixer
+      - VERSION=1
+    - env:
+      - SERVICE=php-cs-fixer
+      - VERSION=2
+      - ALIAS=latest
+    - env:
+      - SERVICE=yamllint
+      - VERSION=1
+      - ALIAS=latest
+      - CMD=.
+
+script:
+  - docker build --build-arg version=${VERSION} -t flintci/${SERVICE}:${VERSION} ${SERVICE}
+  - docker run --rm flintci/${SERVICE}:${VERSION} ${CMD}
+
+after_success:
+  - if [ "$ALIAS" != "" ]; then docker tag flintci/${SERVICE}:${VERSION} flintci/${SERVICE}:${ALIAS} ; fi;
+  - docker images
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then docker push flintci/${SERVICE}; fi
