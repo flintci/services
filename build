@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+service=${1}
+version=${2}
+image=${3}
+
+build_command="docker build --build-arg version=${version}"
+if [ ! -z "${image}" ]; then
+    build_command="${build_command} --build-arg image=${image}"
+fi
+build_command="${build_command} -t flintci/${service}:${version} ${service}"
+
+${build_command}

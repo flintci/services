@@ -22,6 +22,7 @@ matrix:
     - env:
       - SERVICE=php-cs-fixer
       - VERSION=1
+      - IMAGE=php:7.1-alpine
     - env:
       - SERVICE=php-cs-fixer
       - VERSION=2
@@ -33,7 +34,7 @@ matrix:
       - CMD=.
 
 script:
-  - docker build --build-arg version=${VERSION} -t flintci/${SERVICE}:${VERSION} ${SERVICE}
+  - ./build ${SERVICE} ${VERSION} ${IMAGE}
   - docker run --rm flintci/${SERVICE}:${VERSION} ${CMD}
 
 after_success:
