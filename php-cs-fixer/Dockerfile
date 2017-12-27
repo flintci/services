@@ -1,4 +1,6 @@
-FROM php:alpine
+ARG image=php:alpine
+
+FROM $image
 
 ARG version
 
