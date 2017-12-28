@@ -31,7 +31,7 @@ matrix:
       - SERVICE=xmllint
       - VERSION=2
       - ALIAS=latest
-      - CMD=--version
+      - CMD=.
     - env:
       - SERVICE=yamllint
       - VERSION=1
