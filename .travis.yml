@@ -28,6 +28,10 @@ matrix:
       - VERSION=2
       - ALIAS=latest
     - env:
+      - SERVICE=rubocop
+      - VERSION=0
+      - ALIAS=latest
+    - env:
       - SERVICE=xmllint
       - VERSION=2
       - ALIAS=latest
