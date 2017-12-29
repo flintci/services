@@ -40,7 +40,7 @@ matrix:
 
 script:
   - ./build ${SERVICE} ${VERSION} ${IMAGE}
-  - docker run --rm flintci/${SERVICE}:${VERSION} ${CMD}
+  - docker run --rm -v `pwd`:`pwd` -w `pwd` flintci/${SERVICE}:${VERSION} ${CMD}
 
 after_success:
   - if [ "$ALIAS" != "" ]; then docker tag flintci/${SERVICE}:${VERSION} flintci/${SERVICE}:${ALIAS} ; fi;
