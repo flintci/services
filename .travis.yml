@@ -32,6 +32,10 @@ matrix:
       - VERSION=0
       - ALIAS=latest
     - env:
+      - SERVICE=shellcheck
+      - VERSION=latest
+      - CMD="shellcheck --shell bash --exclude SC2038"
+    - env:
       - SERVICE=xmllint
       - VERSION=2
       - ALIAS=latest
