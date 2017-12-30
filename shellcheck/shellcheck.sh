@@ -3,4 +3,4 @@ set -e
 
 path=${1}
 
-find "${path}" -type f -and \( -name '*.sh' -or -executable \) | xargs -I'{}' shellcheck '{}' "${@:2}"
+find "${path}" -type f -and -name '*.sh' | xargs -I'{}' shellcheck '{}' "${@:2}"
