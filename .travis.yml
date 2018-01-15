@@ -7,6 +7,11 @@ matrix:
   fast_finish: true
   include:
     - env:
+      - SERVICE=composer-normalize
+      - VERSION=0.1
+      - ALIAS=latest
+      - CMD="--version"
+    - env:
       - SERVICE=eslint
       - VERSION=1
     - env:
