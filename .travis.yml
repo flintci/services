@@ -33,6 +33,16 @@ matrix:
       - VERSION=2
       - ALIAS=latest
     - env:
+      - SERVICE=phpcbf
+      - VERSION=3
+      - ALIAS=latest
+      - CMD=--help
+    - env:
+      - SERVICE=phpcs
+      - VERSION=3
+      - ALIAS=latest
+      - CMD=--help
+    - env:
       - SERVICE=rubocop
       - VERSION=0
       - ALIAS=latest
