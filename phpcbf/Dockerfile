@@ -4,10 +4,20 @@ ARG version
 
 RUN echo "memory_limit=2048M" >> ${PHP_INI_DIR}/php.ini
 
-RUN apk add --no-cache gnupg
-ADD https://phar.io/releases/phive.phar /usr/local/bin/phive
-RUN chmod +x /usr/local/bin/phive
+ENV COMPOSER_ALLOW_SUPERUSER 1
+COPY --from=composer:1.6 /usr/bin/composer /usr/bin/composer
+RUN composer global require \
+        squizlabs/php_codesniffer:^${version}.0 \
+        dealerdirect/phpcodesniffer-composer-installer \
+        cakephp/cakephp-codesniffer \
+        doctrine/coding-standard \
+        escapestudios/symfony2-coding-standard \
+        object-calisthenics/phpcs-calisthenics-rules \
+        phpmyadmin/coding-standard \
+        slevomat/coding-standard \
+        spryker/code-sniffer \
+        wimg/php-compatibility \
+        wp-coding-standards/wpcs \
+    && composer clear-cache
 
-RUN phive --no-progress install --global --trust-gpg-keys 31C7E470E2138192 phpcbf@^${version}.0
-
-ENTRYPOINT ["phpcbf"]
+ENTRYPOINT ["/root/.composer/vendor/bin/phpcbf"]
