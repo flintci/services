@@ -43,6 +43,10 @@ matrix:
       - ALIAS=latest
       - CMD=--help
     - env:
+      - SERVICE=phpstan
+      - VERSION=0.9
+      - ALIAS=latest
+    - env:
       - SERVICE=rubocop
       - VERSION=0
       - ALIAS=latest
