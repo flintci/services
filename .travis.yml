@@ -51,6 +51,11 @@ matrix:
       - VERSION=0.9
       - ALIAS=latest
     - env:
+      - SERVICE=pycodestyle
+      - VERSION=2
+      - ALIAS=latest
+      - CMD="--help"
+    - env:
       - SERVICE=rubocop
       - VERSION=0
       - ALIAS=latest
