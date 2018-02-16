@@ -12,7 +12,7 @@ matrix:
   include:
     - env:
       - SERVICE=composer-normalize
-      - VERSION=0.4
+      - VERSION=0.5
       - ALIAS=latest
       - CMD="--version"
     - env:
