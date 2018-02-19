@@ -12,7 +12,7 @@ matrix:
   include:
     - env:
       - SERVICE=composer-normalize
-      - VERSION=0.5
+      - VERSION=0
       - ALIAS=latest
       - CMD="--version"
     - env:
@@ -48,7 +48,7 @@ matrix:
       - CMD=--help
     - env:
       - SERVICE=phpstan
-      - VERSION=0.9
+      - VERSION=0
       - ALIAS=latest
     - env:
       - SERVICE=pycodestyle
