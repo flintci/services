@@ -27,6 +27,9 @@ matrix:
     - env:
       - SERVICE=eslint
       - VERSION=4
+    - env:
+      - SERVICE=eslint
+      - VERSION=5
       - ALIAS=latest
     - env:
       - SERVICE=php-cs-fixer
