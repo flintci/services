@@ -1,4 +1,4 @@
-ARG image=php:alpine
+ARG image=php:7.2-alpine
 
 FROM $image
 
