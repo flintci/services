@@ -38,6 +38,7 @@ matrix:
     - env:
       - SERVICE=php-cs-fixer
       - VERSION=2
+      - IMAGE=php:7.2-alpine
       - ALIAS=latest
     - env:
       - SERVICE=phpcbf
