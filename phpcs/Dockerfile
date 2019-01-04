@@ -5,10 +5,10 @@ ARG version
 RUN echo "memory_limit=2048M" >> ${PHP_INI_DIR}/php.ini
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
-COPY --from=composer:1.6 /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 RUN composer global require \
         squizlabs/php_codesniffer:^${version}.0 \
-        dealerdirect/phpcodesniffer-composer-installer \
+        dealerdirect/phpcodesniffer-composer-installer:~0.4 \
         cakephp/cakephp-codesniffer \
         doctrine/coding-standard \
         escapestudios/symfony2-coding-standard \
