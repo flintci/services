@@ -60,6 +60,11 @@ matrix:
       - ALIAS=latest
       - CMD="--help"
     - env:
+      - SERVICE=pylint
+      - VERSION=1
+      - ALIAS=latest
+      - CMD="--help"
+    - env:
       - SERVICE=rubocop
       - VERSION=0
       - ALIAS=latest
